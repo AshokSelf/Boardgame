@@ -97,7 +97,7 @@ pipeline {
             steps {
                 sh 'wget https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/html.tpl -O trivy-html.tpl'
                 sh "trivy image ${DOCKER_IMAGE}:${DOCKER_TAG}"
-                trivy image --format template --template "@/contrib/html.tpl" -o trivy-image-report.html ("${DOCKER_IMAGE}:${DOCKER_TAG}")
+                trivy image --format template --template "@/contrib/html.tpl" -o trivy-image-report.html "${DOCKER_IMAGE}:${DOCKER_TAG}"
 
         }
         stage('Push Docker Image') {
