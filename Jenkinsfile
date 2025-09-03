@@ -34,6 +34,7 @@ pipeline {
                 sh 'trivy fs --format template --template @trivy-html.tpl -o trivy-fs-report.html .'
                 archiveArtifacts artifacts: 'trivy-fs-report.html', fingerprint: true
             }
+   ///
         }
         stage('SonarQube Analysis') {
             steps {
@@ -110,7 +111,7 @@ pipeline {
             }
         }
     }
-
+///
     post {
         success {
             echo 'Pipeline completed successfully'
